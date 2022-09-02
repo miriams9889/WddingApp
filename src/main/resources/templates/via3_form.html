@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Dream wedding</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<meta charset="UTF-8">
+<title>[[${pageTitle}]]</title>
+<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="text-center"><h2> [[${pageTitle}]]</h2></div>
+    <form th:action="@{/viabaptisms/save}" method="post" th:object="${baptism}"
+          style="max-width: 500px; margin: 0 auto">
+        <input type="hidden" th:field="*{id}">
+        <div class="border border-secondary rounded p-3">
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Location</label>
+                <div class="col-sm-8">
+                    <input type="text" th:field="*{location}" class="form-control" required minlength="2"
+                           maxlength="45"/>
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Design</label>
+                <div class="col-sm-8">
+                    <input type="text" th:field="*{design}" class="form-control" required minlength="2" maxlength="45"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Reservation Name</label>
+                <div class="col-sm-8">
+                    <input type="text" th:field="*{reservationName}" class="form-control" required minlength="2"
+                           maxlength="45"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Contact Name</label>
+                <div class="col-sm-8">
+                    <input type="text" th:field="*{contactName}" class="form-control" required minlength="2"
+                           maxlength="45"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Phone Number</label>
+                <div class="col-sm-8">
+                    <input type="text" th:field="*{phoneNr}" class="form-control" required minlength="2"
+                           maxlength="45"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Enabled</label>
+                <div class="col-sm-8">
+                    <input type="checkbox" th:field="*{enabled}"/>
+                </div>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary m-2">Save</button>
+                <button type="button" class="btn btn-secondary m-2" onclick="cancelForm()">Cancel</button>
+
+            </div>
+        </div>
+
+
+    </form>
+
+</div>
+<script type="text/javascript">
+    function cancelForm() {
+        window.location = "[[@{/viabaptisms}]]";
+
+    }
+
+</script>
+
+</body>
+</html>
